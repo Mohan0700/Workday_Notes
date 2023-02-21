@@ -1,0 +1,407 @@
+
+On-Premise       Cloud
+
+People Soft      Workday
+SAP              Salesforce
+RAMCO            Oracle Fusion
+
+Workday is a cloud based Human Capital Management(HCM) and Financial Management software.
+
+* Built for the cloud.
+* Unified finance and HR applications.
+* Leadership with a proven track record.
+* Highest customer satisfaction rate.
+
+ADVANTAGES->
+
+*Unified suite of applications-> Workday delivers a seamless user and administrative experience across financials,HR,talent,payroll,analytics, and more.
+
+* Lower Total Cost of Ownership-> With a cloud delivery model, there is no hardware, software, middleware or database to buy , install or maintain.
+
+*Rapid deployment and faster time to value-> Workday deployments can start immediately and are delivered on time and on budget. Workday applications are more cost-effective and faster to deploy than legacy applications.
+
+*Continuous innovation and adoption->Workday eliminates the cost and complexity associated with traditonal upgrades by delivering easy to adopt , automated updates.(It gets 2 updates annually in september and in march)
+
+*Safety from start->Workday is a trusted partner for some of the worlds largest companies and best known brands. It passes the industry's toughest third party security audits and certifications.
+
+TENANTS AND NAVIGATIONS
+
+A tenant is a unique instance of the Workday Service with a seperate set of data held by Workday in a logically seperated database(i.e, a database seperated through password controlled access).Tenants follow a weekly Service Update schedule.
+
+Five type of tenants->
+
+*Production->Here customers real data exists.
+
+*Sandbox->Its a development tenant, its a copy of all data present in production and its repeated every week.
+
+*Sandbox Preview-> Its also a copy of production.But here whenever a new feature comes it is not directly implemented in production first it is implemented in sandbox preview where customers review the new feature and then that feature is deployed or not deployed in production according to review.
+
+*Implementation->As sandbox tenant is refreshed weekly so developing a project might get affected and create a problem so implementation tenant helps in developing project and can only be refreshed on request of customer.
+
+*Implementation Preview->New feature is delivered both in sandbox preview as well as implementation preview as because features which are developed in implementation are also to be checked with the new features whether any problem is there or not.
+
+________________________________________________________________________________________________________
+
+ORGANISATIONS->
+In Workday we store data in form of business objects.Business object is similar to table which we see in excel with rows and columns. The blue URL's are called as business objects and the data is present inside that.
+The button present in right side of business object is called as related action.
+In Workday we have 2 type of workers -1)Full Time Worker  2)Contract/Contingent Worker(Hired on contract basis)
+
+Types of Organisation ->
+
+1)Supervisory - Foundation of Workday--(It groups worker into management hierarchy)
+2)Company
+3)Cost Center
+4)Region
+5)Matrix
+6)Pay Group
+7)Retiree
+8)Custom
+
+*The complete worker life cycle that is hiring a worker, demoting , promoting or terminating everything is performed in supervisory organisation only.
+
+Creating a Supervisory Org--->
+
+1)Search Start Proxy + select Logan Mcneil
+2)Search Create Supervisory org - Create Reorganisation + give some name(ex Mohan Training) and date
+3) Now give name of the company (ex Mohan Infotech) + select manager/leader ,subtype as company, visibility as everyone and location which you created earlier(Mohan-Bangalore),Staffing Model as Positon Management.
+
+To create supervisory org below another supervisory org
+
+1)From related action of parent sup -> Reorganisation ->select Create Subordinate .
+2)Now same steps as while creating supervisory org.
+
+Creating Location--->
+1)Search Create Location
+2)Give name as Mohan-Bangalore or anything and usages as Business Site.
+3)Add address and select primary and uncheck public visibility.
+4)In Business Site select time profile as 40hrs_week.
+
+Creating Company-->
+1)Search Create Company and then give the name of reorganisation under which you want to keep this company.
+2)After that add the necessarry details like name , visibility, subtype as company and currency as INR or any other.
+
+Creating Cost-Center--->
+1)Search Create Cost Center and then give the name of reorganisation under which you want to keep this company.
+2)After that add the necessarry details like name , visibility, subtype as cost-center .
+
+After creating cost center and company then link your both the org with your supervisory org.
+Go to your sup org and click on the related actions of your sup org and then go to edit sup org and then go to organisational assignments and there add the allowed and default company, cost-center with the sup org.
+
+Staffing Model-->
+1)Job Management -> 1 position can be occupied by any number of people.
+2)Position Management -> 1 position can be occupied by only 1 person.
+
+** In Position Management restrictions are given to individual positions but in job management restrictions are based on organisation level.
+
+Imp Fact-> If a member is hired in a sup org we cant change the staffing model as we will not be able to see the option of changing the staffing model in organisation. For that case we will have to move the person to another sup org and then change the staffing model and then add the person to original sup org.
+
+Editing Staffing model of any sup org-->
+1)Go to related action of that particular sup org and then go to organisation and click on edit staffing model .
+
+Changin Staffing model of multiple sup org--->
+1)Search Maintain Staffing Models
+2)Click on Organisation and then search for your sup org in value.
+3)Select all the sup org and now change the staffing models.
+
+
+Creating a Position for Position Management Staffing model-->
+1)Go to the sup org where you want to create a position for and then related actions->business Process->Create copy or Link BP Definition->Create Position + None Of the Above(It is done to remove restrictions)-> Click Ok
+2)Go to the related action of that sup org again and then Staffing->Create Position->Job Posting Title(ex. CEO) and No. of Positions(ex 1) then availability date and earliest hire date, time type(full time), Location(Bangalore).
+
+Hiring for Position Management Staffing model-->
+1)Go to the sup org where you want to hire employee  and then related actions->Business Process ->Create copy or Link BP Definition->Hire + None of the above
+2)Go to the related action of that sup org again and then Hire->Hire Employee->Create New Pre Hire.
+3)Give Name and Email in contact info.
+4)Give Hire date , position, Employee type(regular), Job Profile(CEO), Time type(Full time), Location(Hyderabad)->Submit
+
+Creating a Position for JOB Management Staffing model-->
+1)Go to the sup org where you want to create a position for and then related actions->business Process->Create copy or Link BP Definition->Edit Hiring Restrictions + None of the above.
+2)Go to the related action of that sup org again and then Organisation->Set Hiring Restrictions.
+3)Now set availability and hire date and if you want any particular job profile(ex IT help desk) + time-type(ex Full Time) etc and then submit.
+
+Hiring for Job Management Staffing model-->
+1)Go to the sup org where you want to create a position for and then related actions->Business Process ->Create copy or Link BP Definition->Hire + None of the above
+2)Go to the related action of that sup org again and then Hire->Hire Employee->Create New Pre Hire.
+3)Give Name and Email in contact info.
+4)Give Hire date , Employee type(regular), Job Profile(IT HelpDesk Specialist), Time type(Full time), Location(Hyderabad)->Submit
+
+Freezing Position(only in position management not in job management)-->
+1)Go to the organisation for whom we want to freeze position and then related action->Business process->Freeze position+none of the above.
+2)then go to related action of the particular position which is there in staffing->position restrictions->Manage Position Freeze->provide froze date and check frozen box->submit
+After getting frozed the position then moves to the unavailable to fill tab.
+
+Closing Position-->
+1)Go to the organisation for whom we want to close the position and then related action->Business process->close position+none of the above.
+2)Then go to related action of the particular position which is there in staffing->position restrictions->Close Position.
+3)Enter the close date and submit.
+ 
+**If workers are already there in the organisation then they should be first terminated or shift to other organisation and then position can be freezed/closed.
+
+Terminating a Employee-->
+1)Go to the related action of that organisation from where you want to terminate employee->Business Process->Termination + None of the above.
+2)The go to that workers related action->Job Change->Terminate Employee->Give Primary reason
++ Termination Date + Last Day of work + Pay through date -> Submit.
+
+Hiring a Contract/Contingent Worker-->
+1)Create position normally just add Worker type as Contingent Worker.
+2)Business Process->Contract Contingent Worker + None of the above.
+2)Now Hire->Contract Contingent Worker->Create a new pre hire->Give name + email->Give Contract Start Date + Position + Worker Type(ex. Contractor) + job Profile + time type(Part Time) + Location->Submit.
+
+Assigning Manager to a Organisation-->
+1)Suppose a worker is there in executive management department then he can become manager of department below executive management.
+2)for assigning manager to a organisation go to related action of that org->Roles->Assign Roles->then write manager in roles and name of that worker in assigned to.
+
+Create Job Profile-->
+1)Search Create Job Profile and then give the effective date and then fill all the details for that particular job profile(Which will be given by client) and then use this job profile while hiring an employee.
+
+________________________________________________________________________________________________________
+
+BUSINESS PROCESS-->
+It is a list of steps to complete a task.Its like a workflow.
+
+For default definitions->Search 'Business Process Types With Default Definitions In Use'
+
+Now Workday has defined default definitions for every business process but we want to change and add more steps to it then we can do it by going to that business process and related action->business process->edit definition.
+
+Now while changing the definitions when we add steps, add only by using smaller case alphabets in order uppercase and numbers should not be used.
+
+Now when we used to start any business process earlier we used to search it and click on none of the above , thus the default definitions is used which is defined by Workday itself and we can manually edit them also.
+When we use Copy Existing Definition we copy the definition defined by someone else for that particular business process and when we use Link Existing Definition we link the definition defined by someone else but in linking what happens is that if the person modifies his own definition it gets modified in my business process definition too which does not happens in copy existing definition.
+
+*Type is like what we want the person to do like ex- approval, action, service etc.
+(Approval-->means that the manager can only approve or cancel the request. 
+ While action--> means that the manager can even alter/edit the request and approve it.
+ Approval Chain-->It means that the approval request will continue moving from bottom to top and we should provide a exit condition  like as to which manager/position should it go and then end.
+ Consolidated Approval-->It is used for bulk approval requests.
+ Service-->It is used for creating Workday account. 
+ To Do-->It is kind of a reminder but it is done outside of Workday not inside Workday.)
+*Specify is to specify the task to be done.(Ex->Checking Documents etc)
+*Group is like security group ie who will do the approval ,action or whatever is required.
+*Optional is like group can skip that and the process will continue and not go to undue task.
+*All is like if there are 3 manager then the approval or action etc will be required by every single one  of them and anyone skipping it will result in making it move to the undue task.
+*Due date is the time limit before which the business process should be completed.
+
+To mark a step as completion of business process go to that step's  related action->business process->set as completion.
+
+Creating Notification in Business Process->
+1)Related action of that business process->business process->Add Notification
+2)Add Trigger on Status, external email address, recepient , groups and message also.
+
+Maintain Advanced Routing->
+Suppose I am Manager in an org so for a employee resigning the approval will come to me and I can approve the resignation or not.But when I myself want to resign then also it will come to me for approval so its not a good practice and for this we use Maintain Advanced Routing.
+
+1)Go to business process->Maintain Advanced Routing->select the security group to which you want to transfer the tasks.
+
+Creating Condition Rule->
+1)Go to the related action of that step in which you want to add the condition and then business process->create condition rule.
+
+Suppose i want to make a condition of location of employee should be India then for that in Condition rule->Country-India and add other things and click ok.
+After this we have to go to business process->Maintain step Conditions->Add our condition rule which we made and then click ok.
+
+Entry condition->It is condition rule which can be applied to any step except the first step ie,Initiation.If all conditions are true then the step will be entered.
+Validation Condition->It is condition rule which can be applied to only  initiation.If all conditions are false then step is skipped and the process continues.
+While Running Condition->Only available for approval chain and consolidated approval chain.
+Exit Condition->It is a condition like if met then the bp gets completed and if not then it continues.Only available for approval chain, consolidated approval chain and integration. 
+
+Creating Workday Account->
+For creating workday account of any employee we should first navigate to the supervisory org where the employee is and then click on the related action button of that employee ->security profile->Create Workday account.
+Now provide the username, new password, verify it uncheck require new password checkbox and click on submit.
+
+Cancelling a Business Process->It can only be performed in inprogress state business process.
+Suppose a position is created and we hire a employee for that position and while hiring we forget to do the BP and hence hiring business process went to in progress task so for that whenever a business process is in inprogress state we can cancel it whenever we want by clicking on related action of that bp->business process->cancel . Give the comment as reason why it is cancelled and click on ok.
+
+Rescind->It can only be performed on completed business process.
+Now when we have successfully hired an employee but now we want to rollback then we use rescind.We click on that worker ->Click on action->View Worker History and then rollback the BP we want to .In this case Hire BP. So we click on related action of that bp->Business Process->Rescind.
+
+Correct->It can be performed irrespective of whether the business process is completed or not.
+Like Rescind go to workers related action->View Worker History->Related action of that bp->business process->Correct.
+
+Mass Cancel Business Process->
+Suppose we want to cancel hire/create position/terminate etc in bulk then search for mass cancel BP and select the business process for which you want bulk  and then click on ok and then select the BP's and click on ok.
+
+Similarly we have Mass Rescind Business Process.
+
+Reassign Tasks->
+Suppose Logan is out of office for 2 days then she can reassign her tasks to someone else for that search reassign tasks and then in reassign for worker -> Write the name of the worker whose tasks are to be reassigned and the date from when to when. Now reassign every single tasks to other employee by writing their name in reassign to tab.
+
+When we add consolidated approval as a step in bp then a error pops up to configure it. For that we have to go to related action of consolidated approval and then Business Process->Configure Consolidated Approval.Click on all the check boxes for the items to be included at once for approval and then click ok.
+
+When we add Approval chain as a step in bp then after adding it.We have to provide the exit condition of that chain also so for that we go to the related action of approval chain step and businessprocess -> Create Approval Chain Condition Rule.Then provide the Description and then the condition like in condition rule(Management level) and in value(Vice President).
+
+Maintain Step Delay->
+When we assign steps in a business process and we know that some step can get a little delayed or might take a longer time then we can make the next steps to get trigerred so that those steps can be completed in the mean time.For that we have to name the steps as b1,b2...like this if b is the step which might get delayed.Also this delay will only take place in b1 b2 when b step is completed then only the next step ie, c step will get trigerred.
+Now for assigning step delay we have to go the related action of that step -> Business Process ->
+Maintain Step Delay
+Here we have to provide calculated date and click on ok.
+
+
+________________________________________________________________________________________________________
+
+Reports->
+It is meant for extracting data from Workday.It could be any details from employee files et.
+Each datasource is mapped to atleast one business object(PBO).It can be mapped to many.
+First business object is called Primary Business Object(PBO).Others are called Related Business Object(RBO).
+There are various data sources->search data sources and there are many provided by workday.
+2 Types->Standard and Indexed.
+Search data sources to see the different type of data sources available, their PBO , permitted security group and all.
+
+To create a report->
+1)Search Create Custom Report
+2)Give Name of Report(ex. Report1-practice) and Type(ex. Simple) and then uncheck the box and then search for the data source(Ex. all active and terminated workers).
+3)Now in additional info  add the fields you want to (ex- Legal First name/Last name , Location, Manager, Dependents etc)->click on ok.
+4)Now if i want to check whether my report is running fine for suppose 10 instances I can click on Test.
+For getting full report click on Run.
+5)Column heading override is to override the field name in reports.
+6)We can even edit the report from related action of the report.
+7)We can sort our report result by providing the field name and in which order it should be sorted(ex->Legal First Name and alphabetically ascending).
+8)Now suppose we want to find the employees who are working in chicago so we can apply filter condition there by putting Location in field + Operator as in the selection list and comparison value as chicago.
+
+** A simple report can be converted to advanced report but standard data source cannot be converted to indexed.
+Generally indexed report are used for optimised performance as standard report is slow.
+Simple report cannot be used for integration but advanced report can be used.
+
+Creating advanced Report->
+1)Same as creating simple report just select advanced in report type.
+2)If you check the enable as web service checkbox then the report generated can be used in integration purpose.  
+
+Creating Calculated Field->
+1)Add a new column and in field select create calculated field for report.
+2)Give field name(ex- CF_employee name) and select function(ex- Format Text).
+3)Select Source field(ex- Full Name) and options(ex- Upper Case).
+
+We can go to related action of report from there calculated field->create(for creating a new calculated field) / maintain (for editing calculated field).
+
+Functions in Calculated Field->
+1)Format Text->upper case,lower case,proper case.
+2)Format Date->various kinds of date writing style.(ex- date field->hire date , format->month-year)
+3)Concatenate Text->To add up all the text.(Add the fields which you want to add together)
+4)Convert Currency->To convert currency and in this while adding in column from options add show currency symbol.
+5)LookUp Value As Of Date->ex- to see manager of a employee at the time when he was hired. 
+6)LookUp Related Value->It helps in finding related value of the person who is looked upon.ex->we look for manager level -01 and in related value is hire date means hire date of manager lvl-01.
+7)Date Constant->Suppose in our report we want to see a particular date for all worker then we use this.
+8)Text Constant->To see a particular text for all worker in our report we use this.
+9)Date Difference->Enter start and end date and get the date difference between them .
+10)Arithmetic Calculation->To see monthly salary of an employee enter total annualised base pay in one field select divide and then enter 12 in another field.
+11)Increment or Decrement Date->Enter today or hire date etc in date field and enter the days,month or year to be added.
+12)LookUp Date RollUp->Enter date Field(ex- hire date) and select format.
+13)Build Date->enter the year, month and day or like we can select day month year from a like hire date ,date of birth etc also.
+14)Prompt for Value->In convert currency in place of target currency code field we generally enter the currency like INR, etc but we can also create cal field here and enter prompt for value in function, field type as single instance and business object as currency. Doing this what happens is that while we run for generating report it first prompts us to enter the value of currency and then shows us the report in that currency.
+15)True/False Condition->To check is employees are male.
+16)Evaluate Expression->It is for returning something is any condition is true.
+17)Evaluate Expression Band->Same as evaluate expression but only diff is that field type is always single instance here and also in return value we dont have to make another cal field as text constant and enter the value there we can simply write here only.
+18)Analytical Indicator->Suppose we want to show blue flag and green flag for male and female resp in report.We while providing field as gender we also put create->create analytical indicator for report in options tab and there further give a name and select flag and provide the condition.
+19)Extract Single Instance->we are extracting only first child of employee
+Source field->dependents
+condition->create->name->mohan_child , function->True/False Condition
+field->relationship value->child
+sort field->age
+Also once practice extract single instance very imp.once try by putting worker as b.o and dependents in field.
+20)Extract Multi Instance->same as that of single instance but in this instead of finding a single child we find all the child dependents.
+21)Sum Related Instances->related field->dependents, sum->all instances, field to sum->age.
+22)Count Related Instances->related field->dependents, sum->all instances.
+23)Substring Text->suppose we have a text like ex->employee@2020 and we want to seperate words to left of @and right also then we use substring text and here delimeter is @.
+24)Text Length->Just display text length.
+
+Creating a Matrix Report->
+In matrix Report we have row and column grouping.This is mainly used for summarizing or for any calculation purpose.
+
+Now if we want to see the count of employees of each company then we can write company in group by field and click ok.
+If we want to see in a detailed view then we can go to drill down choose specific fields and there we can write down the required fields for the detailed view(ex- sup org, country, terminated etc).
+If we want to see the workers data also like hire date, full name, salary etc then we go to detail data in drill down and enter those fields.
+We can add column grouping as well like if we add company in row and sup org in column we can see all the sup org a company has.
+Now we are right now seeing it in a table format so we can see it in other format also go to output and there go to chart.
+We can also use secondary axis along with primary axis.
+________________________________________________________________________________________________________
+
+Integration->
+Two types of Integration->
+1)Inbound Integration-Import data from 3rd party system/flat files into Workday.
+2)Outbound Integration-Export data from Workday to 3rd party system/flat files/Sharing Managers/Person.
+
+Web Service->It is used for data import/export in workday.
+
+Tasks(2000)->Business Process(400)->WebServices(300)(Integration Purpose)
+
+Integration Id's:
+
+1)WorkdayId(WID):It is generated by the system and it will not allow to override-Mandatory.
+2)ReferenceId:It is generated by the system and it will allow to override-Mandatory.
+3)External Reference Id:It is generated by user based requirement and it is an optional one.
+
+Integration Ids:Using this task we can see the list of all integration ids based on business object.
+
+4 Types of Integration available in Workday->EIB(Enterprise Interface Builder),Core Connector,DT(Document Transformation) and Studio.
+
+EIB->It is a simple Integration based on Excel Templates.It is used to put data in excel sheets to workday .
+
+Data Source->There are a number of options for retrieving data:
+1)Outbound->Workday Custom Report
+	  ->Workday Web Service API
+2)Inbound->Attachment
+	 ->(S)FTP(s)-based file
+	 ->REST URL
+
+Transformation->There are also multiple options for transforming data using the EIB:
+1)Alternate Output Format
+2)Custom Report Transformation
+3)Custom XSLT
+
+Deliver Data:Workday also provides a number of different transport protocols:
+1)Outbound->Workday Attachmentt
+	  ->(S)FTP(s)
+	  ->HTTP(s)
+	  ->Email
+	  ->AS2
+
+
+Creating Inbound Integration->
+1)Search Create EIB->Give name (ex- Mohan_Inbound) and select inbound.
+2)Now in general setting the name is given by you but the id generated there is by the system and is WorkdayId.
+3)Then select retrieval method as Attach File At launch and Web Service Option -> Request One Time Payment.
+
+Creating Outbound Integration->
+1)Search Create EIB->Give name and select outbound.
+2)Next select data source(custom report) and select the custom report(make a new dummy one if you dont have one) and in details alternate output format -> xml/csv/
+3)Select Transformation Type->New custom report transformation or dont select anything.(On selecting this we get a option configure transformation in enterprise Interface column with edit.)
+4)Select Delivery method->Workday Attachment and in filename add the namespace present in webservice option of the report and add .xml,.csv or anyother  at the end depending upon the output format.
+5)Related action->Integration->Launch/Schedule and then click ok.
+**If we select web service as data source then it will only result in xml format output.
+Also if suppose we provide some changes in the report and then run the integration then also the report which will be generated will not have the desired changes in it.For changes to be visible in output after changing the report we will have to configure transformation and click ok and done and then run the integration then the output will be changed accordingly.
+
+In inbound when we have created EIB then we can search it by name .
+So we can go and search it like ex- Mohan_Inbound and then related action->Integration->Launch/Schedule and then click ok.
+Validate only Load just validates whether all inputs are loaded or not.
+Now in field Integration Attachment we can put value as create Integration attachment and then select file and then click ok.Now Refresh it till 100%.
+
+Integration->integration events  -->It shows how many time that particular integration was run.
+ 
+Changing template->
+1)Related Action->Template Model->view
+Then there we can see what each field does and their refrence id type and everything we can even edit them by clickong on edit template.
+
+If we want to change the config we made during configuring inbound eib we can go to related action->Enterprise Interface and then click on edit.
+________________________________________________________________________________________________________
+Security->
+Security basically means like what we can do and what we can access in the workday tenant.
+Security Group is basically collection of system users.We have 9 types of security groups.
+
+1)Role Based Security Group->We go to supervisory org and then related actions->roles->Assign Roles->and then assign a role and assign it to a position not to any particular employee because if that person leaves the company so we assign the role to a position. This is called role based security group.
+
+2)User based Security Group->When we login through Logan then we are able to create sup org because it has access to create one but when we proxy a normal employee then we are not able to create sup org because it doesnt have access to create one.So assigning user based security we log in as logan and then search assign user based security group for person and then search for that employee and then assign supervisory org to that employee.Now this emloyee can also create sup org.
+
+To see what all security groups are there for a particular functional area we have a task called functional area search that and see it.
+We can also edit the security group and after editing it to make it active we have to search activate all pending security policy changes.
+Also to see what all security access is for one person we can search for view security group for user and then type in the name of that employee and see the security groups assigned to that person.
+
+Create own Security Group->
+1)Search Create Security Group->select type and name->administered by security group->hr partner
+
+Now we can add this security group wherever we want and provide view or modify access as per need  .
+
+
+
+________________________________________________________________________________________________________
+
+Migration->
+If a client or someone is there who is using another tenant and we want to share data to them then we do that using migration.   
